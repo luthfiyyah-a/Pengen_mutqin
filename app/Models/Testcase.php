@@ -23,6 +23,7 @@ class Testcase extends Model
     // setiap manggil testcase, usernya juga kebawa
     protected $with = ['user'];
 
+    private static $data;
     public static function surah()
     {
         $data = file_get_contents("https://equran.id/api/surat");
@@ -30,8 +31,17 @@ class Testcase extends Model
         // Isi API : nomor, nama, nama_latin, jumlah_ayat, tempat_turun, arti, deskripsi, audio
         
 
-        $surah = json_decode($data, true); // kalau ini jadinya objek
-        return $surah;
+        self::$data = json_decode($data, true); // kalau ini jadinya objek
+        return self::$data;
+    }
+
+
+    public static function get_nama_surah($surah)
+    {
+        // gajelas memang. ngakses API nya kok berkali2 T-T
+        $data = file_get_contents("https://equran.id/api/surat");
+        self::$data = json_decode($data, true); // kalau ini jadinya objek
+        return self::$data[(int)$surah]["nama_latin"];
     }
 
     public static function quran(Testcase $testcase)
@@ -58,6 +68,22 @@ class Testcase extends Model
         $data = file_get_contents($path.$ayat);
         $data = json_decode($data, true); // kalau ini jadinya objek;
         $data_ayat = $data["data"];
+        return $data_ayat;
+    }
+
+    public static function quran_ayat_juz($juz)
+    {
+        $path = "http://api.alquran.cloud/v1/juz/";
+        $data = file_get_contents($path.$juz."quran-uthmani");
+        $data = json_decode($data, true); // kalau ini jadinya objek;
+        $data = collect($data["data"]["ayahs"]);
+
+        // ini ngambil nomor ayatnya (ayatInQuran) secara random
+        $number_random = ($data->random())["number"];
+        
+        // ngambil data ayatnya. dilempar ke func quran_ayat lagi supaya format datanya sama.
+        $data_ayat = self::quran_ayat($number_random);
+
         return $data_ayat;
     }
 

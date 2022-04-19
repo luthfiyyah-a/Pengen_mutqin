@@ -14,7 +14,7 @@
 
     <div class="row d-flex justify-content-center">
         <div class="col-md-8 d-flex justify-content-center">
-            <a  href="https://quran.kemenag.go.id/sura/{{ $testcase["surah"]["number"] }}/{{ $testcase["number"]["inSurah"] }}" class="btn btn-primary" role="button">
+            <a target="_blank" href="https://quran.kemenag.go.id/sura/{{ $testcase["surah"]["number"] }}/{{ $testcase["number"]["inSurah"] }}" class="btn btn-primary" role="button">
                 Lihat Ayat Lengkap
             </a>
         </div>

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id'); //ini foreign key untuk menghubungkan ke tabel user
             $table->timestamps();
             $table->integer('surah');
-            $table->integer('nama_surah');
+            $table->string('nama_surah');
             $table->integer('ayat_surah');
             $table->integer('ayat')->nullable(); 
             $table->integer('juz')->nullable();

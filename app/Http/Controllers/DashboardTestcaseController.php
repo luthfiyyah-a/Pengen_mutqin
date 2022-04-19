@@ -25,7 +25,8 @@ class DashboardTestcaseController extends Controller
     public function index()
     {
         return view('dashboard.testcases.index', [
-            'testcases' => Testcase::where('user_id', auth()->user()->id)->get()
+            'testcases' => Testcase::where('user_id', auth()->user()->id)->get(),
+            'surahs' => Testcase::surah()
             // ambil data testcase yang mana user_id nya sama dengan user yang lagi log in
         ]);
     }
@@ -57,6 +58,7 @@ class DashboardTestcaseController extends Controller
             'ayat_surah' => 'required'
         ]);
 
+        $validateData['nama_surah'] = Testcase::get_nama_surah($request->surah);
         $validateData['user_id'] = auth()->user()->id;
 
         Testcase::create($validateData);

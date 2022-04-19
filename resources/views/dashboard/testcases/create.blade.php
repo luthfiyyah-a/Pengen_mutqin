@@ -53,8 +53,6 @@
     <script>
         $(document).ready(function(){
             console.log("alhamdulillah");
-            // $('#ayat_label').hide();
-            // $('#ayat_input').hide();
             loadAyat();
         });
 

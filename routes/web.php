@@ -53,6 +53,7 @@ Route::get('/hafalanku', function () {
 Route::get('/hafalanku', [HafalankuController::class, 'index']);
 Route::get('/hafalanku/tes', [HafalankuController::class, 'randomTestcase']);
 Route::get('/randomAyat', [RandomAyatController::class, 'index']);
+Route::post('/randomAyat', [RandomAyatController::class, 'pilihJuz']);
 
 // contoh cara baca: jika ada request ke /login yang methodnya get, maka jalankan class LoginController method index
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
