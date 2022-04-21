@@ -11,11 +11,14 @@
             {{-- jika tittle nya adalah Home, maka nav link ini aktif (yang jadi warna putih/lebih nge jreng itu loh) --}}
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ ($active === "hafalanku")? 'active' : '' }}" href="/hafalanku">Hafalanku</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link {{ ($active === "randomAyat")? 'active' : '' }}" href="/randomAyat">Random Ayat</a>
           </li>
+          @auth
+          <li class="nav-item">
+            <a class="nav-link {{ ($active === "hafalanku")? 'active' : '' }}" href="/hafalanku">Hafalanku</a>
+          </li>    
+          @endauth
+          
         </ul>
 
 

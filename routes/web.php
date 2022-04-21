@@ -42,13 +42,6 @@ Route::get('/home', function () {
 
 // skip about dulu
 // skip kategori
-Route::get('/hafalanku', function () {
-    return view('hafalanku', [
-        "title" => "Hafalanku",
-        "active" => "hafalanku",
-        'testcases' => Testcase::where('user_id', auth()->user()->id)->get(),
-    ]);
-});
 
 Route::get('/hafalanku', [HafalankuController::class, 'index']);
 Route::get('/hafalanku/tes', [HafalankuController::class, 'randomTestcase']);

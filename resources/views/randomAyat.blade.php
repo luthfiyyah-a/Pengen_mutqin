@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center m-3">
         <a target="_blank" href="https://quran.kemenag.go.id/sura/{{ $testcase["surah"]["number"] }}/{{ $testcase["numberInSurah"] }}" class="btn btn-primary" role="button">
             Lihat Ayat Lengkap
         </a>
@@ -21,6 +21,25 @@
         </a>
     </div>
 
+    
+    <div class="dropdown" id="tes">
+        <button class="btn btn-success">Spill ayat selanjutnya</button>
+        <div class="dropdown-content dropdown-menu" >
+            <button class="dropdown-item" id="nterjemah">Terjemahan</button>
+            <button id="next-ayat" class="dropdown-item">Ayat</button>
+        </div>
+    </div>
+
+    {{-- ngirim var php ke javascript --}}
+    <input id="testcase-ayat" value={{ $testcase["number"] }} hidden>
+    
+    {{-- ruang untuk ayat selanjutnya apabila diklik --}}
+    <div class="div">
+        <p id="result-ayat" class="droid-arabic-kufi fs-5 text-center mt-5"></p>
+    </div>
+    <div class="div">
+        <p id="result-terjemah" class="fs-6 text-center mt-5"></p>
+    </div>
 
     <div class="container mt-5 p-5">
         <h4 class="text-center">Pilih Juz</h4>
@@ -40,7 +59,6 @@
             @endfor --}}
         {{-- </div> --}}
 
-        {{-- @dd($old_data) --}}
         <form action="/randomAyat" method="post" class="justify-content-center">
             @csrf
             <?php $j = 0?>
@@ -56,9 +74,87 @@
         </form>
     </div>
     
+
+    <script>
+        // var nterjemah = 
+        // document.getElementById("tes").innerHTML = "Hello World";
+        nterjemah = document.getElementById("nterjemah");
+        nAyat = document.getElementById("next-ayat");
+        ayat = document.getElementById("testcase-ayat");
+        // kalo ga di parseInt, takutnya jadinya string. trus kalo ditambah 1, takutnya dia nambah digit 1 dibelakangnya. cth : ayat=2, +1 = 21. itu klo ga diparseInt
+        next_ayat = parseInt(ayat.value) + 1;
+        resultTerjemah = document.getElementById("result-terjemah");
+        resultAyat = document.getElementById("result-ayat");
+        var ayat_text;
+        var ayat_surah;
+        var ayat_numberInSurah;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // buat object ajax
+            var xhr = new XMLHttpRequest();
+    
+            // cek kesiapan ajax
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200){
+                    const result = JSON.parse(xhr.responseText);
+                    //  resultTerjemah.innerHTML = result.data.text;
+                    ayat_text = result.data.text;
+                    ayat_numberInSurah = result.data.numberInSurah;
+                    ayat_surah = result.data.surah.number;
+                    console.log("AWAL AYAt_SurahH = " + ayat_surah);
+                    // xhr.ResponseText itu adalah file yang di xhr.open. alias yg ada di link itu
+                }
+            }
+
+            // eksekusi ajax
+            xhr.open('GET', 'http://api.alquran.cloud/v1/ayah/' + next_ayat , true);
+            xhr.send();
+        });
+
+        nterjemah.addEventListener("click", function(){
+            
+            // buat object ajax
+            var xhr = new XMLHttpRequest();
+    
+            // cek kesiapan ajax
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200){
+                     const result = JSON.parse(xhr.responseText);
+                     resultTerjemah.innerHTML = result["data"]["verses"][ayat_numberInSurah-1]["translation"]["id"];
+                    // xhr.ResponseText itu adalah file yang di xhr.open. alias yg ada di link itu
+                }
+            }
+            console.log("number in surah" + ayat_numberInSurah);
+            console.log("surah" + ayat_surah);
+
+            // eksekusi ajax
+            xhr.open('GET', 'https://api.quran.sutanlab.id/surah/' + ayat_surah, true);
+            xhr.send();
+
+        });
+
+        nAyat.addEventListener("click", function(){
+            
+            // buat object ajax
+            var xhr = new XMLHttpRequest();
+    
+            // cek kesiapan ajax
+            xhr.onreadystatechange = function(){
+                if( xhr.readyState == 4 && xhr.status == 200){
+                     const result = JSON.parse(xhr.responseText);
+                     resultAyat.innerHTML = result.data.text;
+                    // xhr.ResponseText itu adalah file yang di xhr.open. alias yg ada di link itu
+                }
+            }
+            
+            // eksekusi ajax
+            xhr.open('GET', 'http://api.alquran.cloud/v1/ayah/' + next_ayat , true);
+            xhr.send();
+        });
+    
+    
+    </script>
+
 @endsection
 
-<script>
-
-</script>
 

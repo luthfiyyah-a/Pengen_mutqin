@@ -8,7 +8,13 @@
               <p class="lead mb-4">Web App untuk menampilkan Ayat Al-quran secara random dan bertujuan untuk membantu kalian dalam menguji hafalan Al-qur'an</p>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
                 <a href="/randomAyat" type="button" class="btn btn-primary btn-lg px-4 me-sm-3">Tes 30 Juz</a>
-                <a href="/login" type="button" class="btn btn-outline-secondary btn-lg px-4">Log in</a>
+
+                @auth
+                  <a href="/hafalanku" type="button" class="btn btn-outline-secondary btn-lg px-4">Tes Hafalanmu</a>
+                @else
+                  <a href="/login" type="button" class="btn btn-outline-secondary btn-lg px-4">Log in</a>    
+                @endauth
+                
               </div>
             </div>
             <div class="overflow-hidden" style="max-height: 30vh;">
