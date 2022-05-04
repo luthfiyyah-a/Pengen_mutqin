@@ -1,3 +1,61 @@
+## Web App Pengen Mutqin
+
+### Tentang teknologi pembuatan
+Web ini dibuat menggunakan framework laravel, HTML, CSS, JavaScript, dan PHP, serta menggunakan konsep MVC
+
+### Latar belakang ide aplikasi
+
+cerita latar belakang masalah dari ide :
+dulu saya sekolah di sekolah yang ada program menghafal al-quran. jadi tentu ada ujian al-qurannya. biasanya, terkadang ujian al-quran di tempat saya modelan sambung ayat gitu. sebelum ujian, kadang suka minta tolong ke temen buat di-tes-in. jadi, temen ngebacain 1 ayat / potongan ayat, lalu kita ngelanjutin. sayangnya, saya orangnya kadang ga enakan dan suka ngerasa ngerepotin temen.
+    
+    andai ada tools yang bisa nge-bantu untuk nge tes hafalan, dengan cara menampilkan / memutar ayat secara random jadi bisa tes hafalan tanpa ngerepotin temen. jadi, saya pengen buat web-app ini. (sbnrnya udh ada sih app semacam ini di playstore kyknya)
+    
+### Fitur Web App:
+
+1. sign up, log in
+2. ada page yang:
+    - menampilkan ayat alquran secara random tanpa keterangan surat dan ayat untuk mengetes hafalan
+    - ayat yang ditampilkan dapat difilter berdasarkan juz.
+    - terdapat opsi untuk membuka ayat selanjutnya, dan terjemahan ayat selanjutnya. sebagai clue untuk user.
+    - terdapat link yang mengarahkan ke web al-quran online (web lain) yang menampilkan ayat yang sedang dites sekarang. jadi, user dapat tahu ayat yang sedang ditampilkan/diuji ini ayat berapa surah apa, dan bisa membaca surat lebih lengkap.
+3. testcase custome :
+    - menyimpan data custome testcase ayat dari user. (crud)
+    - dapat nge random dari sini juga.
+
+
+### Tampilan Web App
+
+- Home
+
+![image](https://user-images.githubusercontent.com/79054230/166729002-d9caf768-5971-463c-8e34-e64f5538355d.png)
+
+
+- Page Random Ayat
+
+![image](https://user-images.githubusercontent.com/79054230/166729031-8377ae54-6510-4c2f-a8d8-3210e37088d0.png)
+
+
+- Dashboard Testcase custome (untuk menambah testcase ayat)
+
+![image](https://user-images.githubusercontent.com/79054230/166729064-bd57aa76-2289-4b2a-aac2-8db0c560add5.png)
+
+
+- Page random ayat dari testcase custome
+
+![image](https://user-images.githubusercontent.com/79054230/166731803-6e1a67e9-38e4-4b99-8208-eba5847f2414.png)
+
+
+- Registrasi
+
+![image](https://user-images.githubusercontent.com/79054230/166732266-0b14a6ca-f764-4686-b64c-8f7ad494522b.png)
+
+
+- login
+
+![image](https://user-images.githubusercontent.com/79054230/166732371-af0957ee-2ebc-4ee9-9d80-b5927c4f6f08.png)
+
+
+<br></br><br></br>
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
