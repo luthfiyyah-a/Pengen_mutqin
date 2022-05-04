@@ -8,7 +8,7 @@ Web ini dibuat menggunakan framework laravel, HTML, CSS, JavaScript, dan PHP, se
 cerita latar belakang masalah dari ide :
 dulu saya sekolah di sekolah yang ada program menghafal al-quran. jadi tentu ada ujian al-qurannya. biasanya, terkadang ujian al-quran di tempat saya modelan sambung ayat gitu. sebelum ujian, kadang suka minta tolong ke temen buat di-tes-in. jadi, temen ngebacain 1 ayat / potongan ayat, lalu kita ngelanjutin. sayangnya, saya orangnya kadang ga enakan dan suka ngerasa ngerepotin temen.
     
-    andai ada tools yang bisa nge-bantu untuk nge tes hafalan, dengan cara menampilkan / memutar ayat secara random jadi bisa tes hafalan tanpa ngerepotin temen. jadi, saya pengen buat web-app ini. (sbnrnya udh ada sih app semacam ini di playstore kyknya)
+andai ada tools yang bisa nge-bantu untuk nge tes hafalan, dengan cara menampilkan / memutar ayat secara random jadi bisa tes hafalan tanpa ngerepotin temen. jadi, saya pengen buat web-app ini. (sbnrnya udh ada sih app semacam ini di playstore kyknya)
     
 ### Fitur Web App:
 
